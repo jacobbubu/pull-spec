@@ -4,25 +4,26 @@
 [![Coverage Status](https://coveralls.io/repos/github/jacobbubu/pull-spec/badge.svg)](https://coveralls.io/github/jacobbubu/pull-spec)
 [![npm](https://img.shields.io/npm/v/@jacobbubu/pull-spec.svg)](https://www.npmjs.com/package/@jacobbubu/pull-spec/)
 
-> A starter project that makes creating a TypeScript module extremely easy.
+> Rewritten [pull-spec](https://github.com/dominictarr/pull-spec) in TypeScript.
 
-## Intro.
+# pull-spec
 
-This tool was modified from [typescript-library-starter](https://github.com/alexjoverm/typescript-library-starter), but I made the following revisions:
+check that a pull-stream has the correct behavior.
 
-  - Use GitHub Actions instead of TravisCI
-  - Used to develop Node.JS Module instead of packaging code for browser
+``` js
+import { Source } from '@jacobbubupull-spec'
+var pull = require('pull-stream')
 
-## Usage
-
-```bash
-git clone https://github.com/jacobbubu/typescript-starter.git YOURFOLDERNAME
-cd YOURFOLDERNAME
-npm install
+pull(
+  Source(pull.values([1,2,3])),
+  ...
+)
 ```
+will throw an error if the stream callbacks too many times, or out of turn,
+and also if read is called incorrectly.
 
-**Start coding!** `package.json` and entry files are already set up for you, so don't worry about linking to your main file, typings, etc. Just keep those files with the same name.
+It's generally enough to just connect the sink.
 
-## Before push
+## License
 
-Before pushing the code to GitHub, please make sure that `NPM_TOKEN` is configured in `https://github.com/__your_repo__/settings/secrets`, or you can do this through [`semantic-release-cli`](https://github.com/semantic-release/cli).
+MIT
