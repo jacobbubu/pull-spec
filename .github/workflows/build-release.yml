@@ -51,12 +51,6 @@ jobs:
         if: success()
         run: npm run test:prod
 
-      - name: Coveralls
-        if: success()
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
   release:
     name: npm publish / GitHub release
     needs: test
